@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+        input[type="text"], input[type="button"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        input[type="button"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        input[type="button"]:hover {
+            background-color: #45a049;
+        }
+        input[readonly] {
+            background-color: #f9f9f9;
+        }
+        #txtans {
+            background-color: #f0f8ff;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <input type="button" id="btngen" value="Generate" /> <br/>
+        No1 <input type="text" id="txtno1" readonly/> <br/>
+        No2 <input type="text" id="txtno2" readonly/> <br/>
+        <input type="text" id="txtans" placeholder="Answer here">
+        <br/>
+        <input type="button" id="btncheck" value="Check"/>
+    </form>
+
+    <script>
+        let txtno1 = document.querySelector("#txtno1");
+        let txtno2 = document.querySelector("#txtno2");
+        let btncheck = document.querySelector("#btncheck");
+        let txtans = document.querySelector("#txtans");
+        let btngen = document.querySelector("#btngen");
+
+        btngen.addEventListener("click", () => {
+            const randomNumber1 = Math.floor(Math.random() * 50) + 1;
+            const randomNumber2 = Math.floor(Math.random() * 50) + 1;
+
+            txtno1.value = randomNumber1;
+            txtno2.value = randomNumber2;
+        })
+
+        btncheck.addEventListener("click", () => {
+            let a = parseInt(txtno1.value);
+            let b = parseInt(txtno2.value);
+            let c = parseInt(txtans.value);
+            if (a + b == c) {
+                alert("Perfect Number");
+            } else {
+                alert("Try again");
+            }
+        })
+    </script>
+</body>
+</html>

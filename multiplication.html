@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Input Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            background-color: #ffffff;
+            padding: 25px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            font-size: 16px;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+            text-align: left;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+        }
+
+        input[type="button"] {
+            width: 100%;
+            padding: 12px 0;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        input[type="button"]:hover {
+            background-color: #0056b3;
+        }
+
+        .form-footer {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .result {
+            font-size: 18px;
+            font-weight: bold;
+            color: #007bff;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <form id="numberForm" action="javascript:void(0);">
+            <label for="txtno1">Number 1</label>
+            <input type="text" id="txtno1" name="number1" placeholder="Enter first number" required>
+            
+            <label for="txtno2">Number 2</label>
+            <input type="text" id="txtno2" name="number2" placeholder="Enter second number" required>
+            
+            <input type="button" id="btnans" value="Submit">
+        </form>
+        
+        <div class="result" id="spanans">Result will be displayed here</div>
+        
+        <div class="form-footer">
+            Enter valid numbers and click "Submit".
+        </div>
+    </div>
+</body>
+<script>
+    // Selecting DOM elements
+    let txtno1 = document.querySelector("#txtno1");
+    let txtno2 = document.querySelector("#txtno2");
+    let btnans = document.querySelector("#btnans");
+    let spanans = document.querySelector("#spanans");
+
+    // Adding event listener for button click
+    btnans.addEventListener("click", () => {
+        let no1 = parseInt(txtno1.value);
+        let no2 = parseInt(txtno2.value);
+
+        // Validating inputs
+        if (isNaN(no1) || isNaN(no2)) {
+            spanans.innerHTML = "Please enter valid numbers.";
+        } else {
+            spanans.innerHTML = `Result: ${no1 * no2}`;
+        }
+    });
+</script>
+</html>
